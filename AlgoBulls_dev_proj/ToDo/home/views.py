@@ -6,6 +6,14 @@ from rest_framework.permissions import IsAuthenticated
 from .models import Task
 from .serializers import TaskSerializer
 
+
+from django.shortcuts import render
+
+def home(request):
+    return render(request, 'templates/home/index.html') 
+
+
+
 #GET API TO FETCH ALL TASK 
 @api_view(['GET'])
 @authentication_classes([BasicAuthentication])
