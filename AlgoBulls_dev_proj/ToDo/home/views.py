@@ -10,7 +10,7 @@ from .serializers import TaskSerializer
 from django.shortcuts import render
 
 def home(request):
-    return render(request, 'templates/home/index.html') 
+    return render(request, 'home/index.html') 
 
 
 
