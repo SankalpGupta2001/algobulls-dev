@@ -1,0 +1,41 @@
+name: Run Tests and Linting
+
+on:
+  push:
+    branches: [ main ]  # Change this to your branch name
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # Specify your Python version
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt  # Assuming you have a requirements.txt file
+
+    - name: Run Flake8 (Python linter)
+      run: |
+        pip install flake8
+        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+    - name: Run Black (Python code formatter)
+      run: |
+        pip install black
+        black --check .  # Use `black .` to auto-format code
+
+    - name: Run Unit Tests
+      run: |
+        python manage.py test home  # Run unit tests in the 'home' app
+
+    - name: Run Integration Tests
+      run: |
+        python manage.py test home  # Run integration tests in the 'integration_tests' app
+
