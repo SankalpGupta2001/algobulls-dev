@@ -19,7 +19,7 @@ from django.urls import path
 from home.views import get_Task,save_Task,get_By_Id_Task,update_Task,delete_Task,home
 
 urlpatterns = [
-        path('/', home, name='home'),
+        path('', home, name='home'),
         path('api/get-tasks/', get_Task, name='get_Task'),  
     path('api/save-tasks/', save_Task, name='save_Task'),  
  path('api/getById-tasks/<int:task_id>/', get_By_Id_Task, name='get_By_Id_Task'),
